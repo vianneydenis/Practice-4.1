@@ -9,6 +9,7 @@ output: html_document
 data("iris")
 ```
 I didn't know whether I need to reproduce the plot by `pairs` or not, and awfully I cannot make it successfully by `pairs`. So I reproduce the plot by `plot` first.
+
 ```{r, warning=FALSE, message=FALSE}
 d.setosa<-iris[iris$Species=='setosa',]
 d.versicolor<-iris[iris$Species=='versicolor',]  
@@ -34,9 +35,18 @@ legend("topleft", legend=c("setosa","versicolor","virginica"),
 
 abline(lm(iris$Petal.Width ~ iris$Petal.Length), col="black")
 text(5, 0.5, paste("R =", round(cor(iris$Petal.Length, iris$Petal.Width), 2)))
-```
 
-I tried to use `pairs` to make a plot, but I was not sure about what I made :(
+# Your code could be way shorter, you will see it tomorrow
+# You can also try to recycle the R from your lm. Try:
+# model<-lm(iris$Petal.Width ~ iris$Petal.Length)
+# r2_value <- summary(model)$r.squared
+# text(5.5, 0.5, labels = paste("R = ", round(sqrt(r2_value), 2)), pos = 4)
+
+```
+I tried to use `pairs` to make a plot, but I was not sure about what I made :( 
+VD: I was just asking to explore what you can do using `pairs`. You did well below.
+
+
 ```{r, warning=FALSE, message=FALSE}
 pairs(iris[1:4], 
       col=c("black", "red", "green")[iris$Species], 
